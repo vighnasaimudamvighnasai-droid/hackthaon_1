@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CreatorConnect AI v2 – Hire generative AI creators</title>
+<meta name="description" content="Connecting forward-thinking brands with elite generative AI creators, filmmakers, and digital artists.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+:root{--bg:#EEF1F8;--surface:#fff;--ink:#14163A;--muted:#5A5E80;--line:#D6DAEA;--accent:#E23D8B;--accent-ink:#fff;--cool:#2DB5C9;
+--display:'Bricolage Grotesque','Arial Narrow',Arial,sans-serif;--body:'Instrument Sans',system-ui,-apple-system,Segoe UI,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1128;--surface:#191C3D;--ink:#EEF0FF;--muted:#9EA3CC;--line:#2B2F5C;--accent:#FF5CA3;--accent-ink:#14163A;--cool:#4FD0E3}}
+:root[data-theme="dark"]{--bg:#0F1128;--surface:#191C3D;--ink:#EEF0FF;--muted:#9EA3CC;--line:#2B2F5C;--accent:#FF5CA3;--accent-ink:#14163A;--cool:#4FD0E3}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 var(--body)}
+h1,h2,h3{font-family:var(--display);line-height:1.05;margin:0;letter-spacing:-.02em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--cool);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:62px}
+.logo{font:800 21px var(--display);text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo i{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--cool));display:inline-block}
+nav{display:flex;gap:22px;align-items:center}
+nav a{text-decoration:none;font-weight:500;font-size:15px;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+.btn{display:inline-block;border:0;cursor:pointer;font:600 16px var(--body);padding:13px 22px;border-radius:999px;background:var(--accent);color:var(--accent-ink);text-decoration:none}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+nav .btn{padding:9px 18px;font-size:15px;color:var(--accent-ink)}
+.hero{padding:72px 0 56px;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(40px,6.4vw,76px);font-weight:800}
+.hero p.lead{font-size:20px;color:var(--muted);max-width:30em;margin:22px 0 28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.match{background:var(--surface);border:1.5px solid var(--ink);border-radius:22px;padding:22px;box-shadow:8px 8px 0 var(--cool)}
+.match h2{font-size:22px;margin-bottom:4px}
+.match small{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.chip{font:500 15px var(--body);padding:8px 15px;border-radius:999px;border:1.5px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.mini{display:flex;flex-direction:column;gap:10px;min-height:210px}
+.row{display:flex;align-items:center;gap:12px;padding:10px;border:1px solid var(--line);border-radius:14px}
+.row b{display:block;font-weight:600}
+.row span{font-size:14px;color:var(--muted)}
+.av{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font:700 15px var(--display);color:#fff}
+.row .rate{margin-left:auto;font-weight:600;font-size:15px;white-space:nowrap}
+section{padding:64px 0}
+.sec-head{max-width:34em;margin-bottom:34px}
+.sec-head h2{font-size:clamp(30px,4.4vw,48px);font-weight:700}
+.sec-head p{color:var(--muted);margin:12px 0 0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--ink)}
+.step{padding:22px 24px 0 0}
+.step .n{font:800 15px var(--display);color:var(--accent)}
+.step h3{font-size:23px;margin:6px 0 8px}
+.step p{margin:0;color:var(--muted);font-size:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.cover{height:130px;display:flex;align-items:flex-end;padding:12px}
+.cover span{background:rgba(255,255,255,.9);color:#14163A;font:600 13px var(--body);padding:4px 10px;border-radius:999px}
+.card .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{font-size:20px}
+.card .tools{font-size:14px;color:var(--muted)}
+.card .foot{margin-top:auto;padding-top:12px;display:flex;justify-content:space-between;align-items:center;font-size:15px}
+.card .foot button{font:600 14px var(--body);background:var(--ink);color:var(--bg);border:0;border-radius:999px;padding:8px 15px;cursor:pointer}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.panel{border-radius:22px;padding:34px;background:var(--surface);border:1px solid var(--line)}
+.panel.dark{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.panel h3{font-size:30px;margin-bottom:10px}
+.panel ul{padding-left:20px;margin:14px 0 24px}
+.panel.dark .btn{background:var(--cool);color:#14163A}
+form{display:grid;gap:14px;max-width:560px}
+label{font-weight:600;font-size:15px;display:grid;gap:6px}
+input,select,textarea{font:400 16px var(--body);padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);width:100%}
+#msg{margin:0;padding:14px 16px;border-radius:12px;background:var(--surface);border:1.5px solid var(--cool);display:none}
+footer{border-top:1px solid var(--line);padding:30px 0 40px;color:var(--muted);font-size:15px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media (max-width:820px){.hero,.two,.steps{grid-template-columns:1fr}.hero{padding-top:40px}nav a:not(.btn){display:none}.step{padding-bottom:18px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+[hidden]{display:none!important}
+#auth{min-height:100vh;display:grid;grid-template-columns:1fr 1fr}
+.aside{background:var(--ink);color:var(--bg);padding:44px;display:flex;flex-direction:column;justify-content:space-between;gap:32px}
+.aside h2{font-size:clamp(32px,4vw,54px);font-weight:800;max-width:11em}
+.aside p{margin:16px 0 0;max-width:26em;opacity:.8}
+.formside{display:grid;place-items:center;padding:36px 22px}
+.authbox{width:100%;max-width:400px}
+.authbox h1{font-size:38px;margin-bottom:8px}
+.authbox .sub{color:var(--muted);margin:0 0 24px}
+.authbox form{max-width:none}
+.err{color:var(--accent);font-weight:600;margin:0;min-height:1.4em;font-size:15px}
+.switch{margin:22px 0 0;color:var(--muted);font-size:15px}
+.switch a{color:var(--ink);font-weight:600}
+#hi{font-size:15px;font-weight:600}
+@media (max-width:820px){#auth{grid-template-columns:1fr}.aside{padding:28px}}
+.fbar{display:grid;grid-template-columns:2fr repeat(5,1fr);gap:10px;margin-bottom:12px}
+.fbar input,.fbar select{padding:10px 12px;font-size:15px}
+.chk{display:flex;align-items:center;gap:8px;font-weight:500;font-size:15px}
+.chk input{width:auto}
+.meta{display:flex;justify-content:space-between;align-items:center;margin:10px 0 16px;color:var(--muted);font-size:15px;gap:12px;flex-wrap:wrap}
+.vb{display:flex;gap:6px;flex-wrap:wrap}
+.vb span,.tg{font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;background:color-mix(in srgb,var(--cool) 24%,transparent)}
+.vb span.no{background:transparent;border:1px dashed var(--line);color:var(--muted)}
+.tg{display:inline-block;margin:0 6px 6px 0;font-size:13px;background:color-mix(in srgb,var(--ink) 9%,transparent)}
+.empty{padding:30px;border:1.5px dashed var(--line);border-radius:18px;text-align:center}
+.empty .chip{margin:4px}
+dialog{border:0;border-radius:22px;padding:0;max-width:780px;width:calc(100% - 28px);max-height:90vh;background:var(--surface);color:var(--ink)}
+dialog::backdrop{background:rgba(10,12,40,.62)}
+.dh{padding:24px 26px 0;display:flex;gap:16px;align-items:center}
+.dh h3{font-size:28px}.dh span{color:var(--muted);font-size:15px}
+.dbody{padding:18px 26px 26px;display:grid;gap:20px}
+.dbody h4{margin:0 0 8px;font:700 17px var(--display)}
+.vrow{display:flex;gap:12px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;font-size:15px}
+.vrow span{color:var(--muted)}
+.pf{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;align-items:start}
+.th{border-radius:12px;display:grid;place-items:center;color:#fff;font:700 14px var(--display);margin:0 auto 8px;max-height:230px}
+.pi span{font-size:14px;color:var(--muted)}
+.x{margin-left:auto;background:transparent;border:0;font-size:30px;cursor:pointer;color:var(--ink);line-height:1}
+.builder{background:var(--surface);border:1.5px solid var(--ink);border-radius:20px;padding:22px;margin-bottom:22px;box-shadow:6px 6px 0 var(--accent)}
+.builder textarea{margin:8px 0 14px}
+#bf{max-width:none}
+.bgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.bgrid .full{grid-column:1/-1}
+@media (max-width:820px){.fbar{grid-template-columns:1fr 1fr}.fbar #q{grid-column:1/-1}.bgrid{grid-template-columns:1fr}}
+.fab{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:20;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+#chat{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;width:410px;max-width:calc(100% - 24px);height:min(640px,calc(100% - 90px));display:flex;flex-direction:column;background:var(--surface);border:1.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:8px 8px 0 var(--cool)}
+#chat .ch{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line)}
+#chat .ch b{font:700 17px var(--display);margin-right:auto}
+#cm{flex:1;overflow:auto;padding:14px;display:flex;flex-direction:column;gap:14px}
+.cmsg{display:flex;gap:10px}.cmsg .av{width:30px;height:30px;font-size:12px;background:var(--accent);color:var(--accent-ink)}
+.cmsg.u .av{background:var(--cool);color:#14163A}
+.cmsg .tx{overflow-wrap:anywhere;font-size:15px;padding-top:3px;min-width:0}
+.cmsg.u .tx{background:color-mix(in srgb,var(--cool) 16%,transparent);padding:7px 12px;border-radius:12px}
+.cemp{margin:auto;text-align:center}.cemp h3{font-size:22px;margin-bottom:6px}.cemp p{color:var(--muted);font-size:15px;margin:0 0 12px}
+.cemp .chip{display:block;margin:6px auto;font-size:14px}
+.cin{display:flex;gap:8px;align-items:flex-end;margin:10px 12px 0;border:1.5px solid var(--line);border-radius:14px;padding:6px 6px 6px 12px}
+.cin textarea{border:0;resize:none;max-height:120px;padding:7px 0;background:transparent;outline:0}
+.cin .btn{padding:9px 15px;font-size:15px}
+.cnote{text-align:center;color:var(--muted);font-size:12px;margin:6px 0 10px}
+.sv{align-self:flex-start;font-size:13px;padding:5px 12px}
+.lk{font-weight:700;color:var(--accent);text-decoration:underline;cursor:pointer}
+.dbody .cta .btn{padding:10px 18px;font-size:15px}
+.cmp{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:25;background:var(--ink);color:var(--bg);border-radius:999px;padding:9px 10px 9px 20px;display:flex;gap:12px;align-items:center;box-shadow:0 8px 24px rgba(0,0,0,.3);white-space:nowrap}
+.cmp .btn{padding:8px 16px;font-size:15px;background:var(--cool);color:#14163A}
+.cmp .btn:disabled{opacity:.5;cursor:not-allowed}
+.cmp .chip{color:var(--bg);border-color:var(--bg)}
+.tbl{width:100%;border-collapse:collapse;font-size:15px;min-width:520px}
+.tbl th,.tbl td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl th{color:var(--muted);font-weight:600;width:26%}
+.tw{overflow-x:auto}
+.rq{display:grid;gap:12px}
+.est{font:700 24px var(--display);margin-left:6px}
+nav .chip{font-size:14px;padding:6px 12px}
+@media (max-width:820px){#hi{display:none}.cmp{max-width:calc(100% - 24px);gap:8px;padding-left:14px}}
+:root{--bg:#F6F6F9;--ink:#12121C;--muted:#5D5D72;--line:#DCDCE6;--accent:#6C4DFF;--accent-ink:#fff;--cool:#FF7A1A;--display:'Syne','Arial Narrow',Arial,sans-serif;--body:'DM Sans',system-ui,-apple-system,Segoe UI,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E0E16;--surface:#171724;--ink:#F1F1FA;--muted:#A0A0BC;--line:#2A2A3E;--accent:#9A83FF;--accent-ink:#0E0E16;--cool:#FF9A4D}}
+:root[data-theme="dark"]{--bg:#0E0E16;--surface:#171724;--ink:#F1F1FA;--muted:#A0A0BC;--line:#2A2A3E;--accent:#9A83FF;--accent-ink:#0E0E16;--cool:#FF9A4D}
+.btn{border-radius:10px}.card,.panel,.match,.builder{border-radius:12px}.chip,.card .foot button,.sv{border-radius:8px}
+.hero h1{letter-spacing:-.035em}
+.hero{background:radial-gradient(circle at 85% 20%,color-mix(in srgb,var(--cool) 18%,transparent),transparent 45%)}
+.rt{font-weight:700;font-size:14px}.rt span{color:var(--muted);font-weight:400}
+</style>
+</head>
+<body>
+<div id="auth">
+ <div class="aside">
+  <a class="logo" href="#auth"><i></i>CreatorConnect AI</a>
+  <div><h2>Where brands meet the best AI creators.</h2><p>Log in to browse vetted creators and pay safely through escrow.</p></div>
+  <small>© 2026 CreatorConnect AI</small>
+ </div>
+ <div class="formside"><div class="authbox">
+  <div id="loginView">
+   <h1>Log in</h1><p class="sub">Welcome back. Enter your details to open CreatorConnect AI.</p>
+   <form id="loginForm">
+    <label>Email<input name="email" type="email" required autocomplete="email"></label>
+    <label>Password<input name="password" type="password" required autocomplete="current-password"></label>
+    <p class="err" id="lerr" role="alert"></p>
+    <button class="btn" type="submit">Log in</button>
+   </form>
+   <p class="switch">New here? <a href="#" id="toSignup">Create an account</a></p>
+  </div>
+  <div id="signupView" hidden>
+   <h1>Create account</h1><p class="sub">Set up your free account in under a minute.</p>
+   <form id="signupForm">
+    <label>Full name<input name="name" required autocomplete="name"></label>
+    <label>Email<input name="email" type="email" required autocomplete="email"></label>
+    <label>I am a<select name="role"><option value="brand">Brand looking to hire</option><option value="creator">Creator looking to join</option></select></label>
+    <label>Password<input name="password" type="password" required minlength="8" autocomplete="new-password" placeholder="At least 8 characters"></label>
+    <label>Confirm password<input name="confirm" type="password" required autocomplete="new-password"></label>
+    <p class="err" id="serr" role="alert"></p>
+    <button class="btn" type="submit">Create account</button>
+   </form>
+   <p class="switch">Already have an account? <a href="#" id="toLogin">Log in</a></p>
+  </div>
+ </div></div>
+</div>
+<div id="site" hidden>
+<header><div class="wrap bar">
+  <a class="logo" href="#top"><i></i>CreatorConnect AI</a>
+  <nav><a href="#how">How it works</a><a href="#creators">Creators</a><a href="#join">For creators</a><a class="btn" href="#creators">Find creators</a><button class="chip" id="reqBtn" type="button">Requests (0)</button><button class="chip" id="theme" type="button" aria-label="Switch light or dark theme">Theme</button><span id="hi"></span><button class="btn ghost" id="logout" type="button">Log out</button></nav>
+</div></header>
+
+<main id="top">
+<div class="wrap hero">
+  <div>
+    <h1>Hire the people who make AI look this good.</h1>
+    <p class="lead">CreatorConnect AI matches brands with vetted generative AI filmmakers, image artists, sound designers, and 3D creators. Search by skill, tool, format, and commercial-use rights.</p>
+    <div class="cta"><a class="btn" href="#creators">Browse creators</a></div>
+  </div>
+  <div class="match" aria-live="polite">
+    <h2>What do you need made?</h2>
+    <small>Pick one and see who is available this week.</small>
+    <div class="chips" id="needChips"></div>
+    <div class="mini" id="mini"></div>
+  </div>
+</div>
+
+<section id="how"><div class="wrap">
+  <div class="sec-head"><h2>From search to final cut in three steps</h2><p>Every project is held in escrow and released when you approve the work.</p></div>
+  <div class="steps">
+    <div class="step"><span class="n">1</span><h3>Search creators</h3><p>Filter by skill, tool, content type, format, and commercial-use rights.</p></div>
+    <div class="step"><span class="n">2</span><h3>Review profiles</h3><p>Open portfolios, check verification, and compare workflows, rates, and turnaround.</p></div>
+    <div class="step"><span class="n">3</span><h3>Approve and pay</h3><p>Funds sit in escrow. You get revisions, source files, and a usage license on approval.</p></div>
+  </div>
+</div></section>
+
+<section id="creators"><div class="wrap">
+  <div class="sec-head"><h2>Find the right AI creator</h2><p>Search by skill, tool, content type, format, and commercial-use rights. Open a profile to see the work, the workflow, and what has been verified.</p></div>
+  <div class="fbar">
+    <input id="q" type="search" placeholder="Search name, skill, or tool" aria-label="Search creators">
+    <select id="fc" aria-label="Content type"></select><select id="ft" aria-label="Tool"></select><select id="fs" aria-label="Skill"></select><select id="ff" aria-label="Format"></select><select id="fl" aria-label="Commercial use"></select>
+  </div>
+  <div class="meta"><span style="display:flex;gap:18px;align-items:center;flex-wrap:wrap"><label class="chk"><input type="checkbox" id="fv"> Fully verified only</label><label class="chk"><input type="checkbox" id="fsv"> Saved only</label><select id="fo" aria-label="Sort" style="width:auto;padding:6px 10px"><option value="rel">Sort: Featured</option><option value="top">Top rated</option><option value="low">Lowest rate</option><option value="fast">Fastest turnaround</option></select></span><span id="count" role="status"></span></div>
+  <div id="rv" class="vb" style="margin-bottom:16px;align-items:center"></div><div class="grid" id="grid"></div>
+</div></section>
+
+<section id="join"><div class="wrap two">
+  <div class="panel"><h3>For brands</h3><p>Skip the agency markup and the guesswork about who can actually deliver.</p>
+    <ul><li>Portfolio-verified creators</li><li>Fixed-price packages or hourly</li><li>Commercial usage rights included</li></ul>
+    <a class="btn" href="#creators">Browse creators</a></div>
+  <div class="panel dark"><h3>For creators</h3><p>Get paid for the craft behind the prompt. Keep your rights and set your own rates.</p>
+    <ul><li>Clients find you by skill and tool</li><li>Payment released within 3 days of approval</li><li>No listing fees; 10% on completed work</li></ul>
+    <a class="btn" href="#creators">See creator profiles</a></div>
+</div></section>
+
+<dialog id="dlg"><div id="dc"></div></dialog>
+</main>
+
+<dialog id="dlg2"><div id="dc2"></div></dialog>
+<div class="cmp" id="cmp" hidden></div>
+<button class="btn fab" id="fab">Ask AI</button>
+<aside id="chat" hidden aria-label="AI assistant">
+ <div class="ch"><div class="av" style="width:32px;height:32px;font-size:13px">AI</div><b>CreatorConnect AI</b><button class="chip" id="cnew">New chat</button><button class="x" id="cx" aria-label="Close chat">×</button></div>
+ <div id="cm" aria-live="polite"></div>
+ <div class="cin"><textarea id="ci" rows="1" placeholder="Ask for creator recommendations" aria-label="Message"></textarea><button class="btn" id="cs">Send</button></div>
+ <p class="cnote" id="cnote">AI can make mistakes. Check profiles before hiring.</p>
+</aside>
+<footer><div class="wrap"><span>© 2026 CreatorConnect AI</span><span>Terms · Privacy · Contact</span></div></footer>
+</div>
+
+<script>
+const CATS=["Film","Animation","Image","Audio","3D"];
+const mk=(n,c,sp,s,r,tat,g,tl,sk,fm,lic,vf,wf,p)=>({n,c,sp,s,r,tat,g,tl,sk,fm,lic,vf,wf:wf.split(" > "),p});
+const CR=[
+mk("Aanya Rao","Film","AI Filmmaker","Brand films and product teasers",55,"5 days",["#E23D8B","#7A3DE2"],["Veo","Runway","DaVinci"],["Storyboarding","Color grading","Prompt direction"],["16:9","9:16"],["social","ads","broadcast"],[1,1,1],"Script > Midjourney keyframes > Veo image-to-video > Runway cleanup > DaVinci grade",[["Aurora Sneakers teaser","Video","9:16","Veo","15s product reveal, 40 generations, 3 revisions"],["Citrus Soda spot","Video","16:9","Runway","30s spot with consistent product shots"]]),
+mk("Marcus Hale","Film","AI Filmmaker","Music videos and short narrative",70,"7 days",["#2DB5C9","#14163A"],["Sora","Kling","After Effects"],["Narrative","Lip sync","VFX compositing"],["16:9"],["social","ads"],[1,1,0],"Treatment > Sora scenes > Kling motion > After Effects composite",[["Neon Static MV","Video","16:9","Sora","3 min music video, 120 shots"],["Last Train short","Video","16:9","Kling","90s narrative short"]]),
+mk("Mei Tan","Film","AI Video Editor","Social video series and ads",50,"3 days",["#E23D8B","#F29E4C"],["Runway","Pika","Premiere"],["Short-form editing","Prompt direction","Captioning"],["9:16","1:1","4:5"],["social","ads"],[1,0,1],"Hook concepts > Pika clips > Runway extend > Premiere edit",[["Fitness app series","Video","9:16","Pika","12 vertical ads in one week"],["Skincare launch reel","Video","4:5","Runway","20s launch reel"]]),
+mk("Diego Costa","Animation","AI Animator","Mascots and explainer animation",58,"6 days",["#F29E4C","#7A3DE2"],["Kling","ComfyUI","After Effects"],["Character design","Motion design","Rigging"],["16:9","1:1"],["social","ads","broadcast"],[1,1,1],"Character sheet > ComfyUI consistency > Kling animate > After Effects polish",[["Bolt the mascot","Animation","1:1","ComfyUI","Consistent mascot across 24 poses"],["Bank explainer","Animation","16:9","Kling","60s explainer"]]),
+mk("Lena Okafor","Image","Generative Graphics","Campaign art and packaging concepts",40,"2 days",["#F29E4C","#E23D8B"],["Midjourney","Flux","Photoshop"],["Art direction","Packaging","Retouching"],["1:1","4:5","16:9"],["social","ads"],[1,0,1],"Moodboard > Midjourney explore > Flux refine > Photoshop retouch",[["Tea packaging set","Image","1:1","Midjourney","8 pack concepts"],["Autumn campaign","Image","4:5","Flux","12 key visuals"]]),
+mk("Tomas Ibarra","Image","Generative Graphics","Consistent characters and mascots",45,"3 days",["#4F7CFF","#2DB5C9"],["Stable Diffusion","ComfyUI","Flux"],["LoRA training","Character consistency","Prompt direction"],["1:1","9:16"],["social"],[0,1,0],"Reference set > LoRA training > ComfyUI batch > manual QA",[["Brand character pack","Image","1:1","ComfyUI","40 on-model images from one LoRA"],["Story stickers","Image","9:16","Flux","30 sticker variants"]]),
+mk("Priya Nair","Audio","Sound and Voice","Jingles, voiceover, sonic logos",35,"2 days",["#7A3DE2","#2DB5C9"],["Suno","ElevenLabs","Logic"],["Sound design","Voice cloning with consent","Mixing"],["16:9","9:16"],["social","ads","broadcast"],[1,1,1],"Concept > Suno drafts > Logic arrange > ElevenLabs voice > master",[["Cafe sonic logo","Audio","16:9","Suno","5s logo, 6 variations"],["Podcast ad voice","Audio","9:16","ElevenLabs","30s licensed voice"]]),
+mk("Jonas Weber","3D","3D Artist","Product renders and AR assets",65,"6 days",["#14163A","#E23D8B"],["Meshy","Blender","Unreal"],["Modeling","Texturing","AR export"],["16:9","1:1"],["social","ads"],[1,0,1],"Concept > Meshy base mesh > Blender cleanup > Unreal render",[["Headphone hero render","3D","16:9","Blender","Hero render and turntable"],["Sneaker AR asset","3D","1:1","Meshy","USDZ and GLB files"]]),
+mk("Sam Duarte","3D","3D Artist","Virtual sets and game assets",60,"7 days",["#2DB5C9","#4F7CFF"],["Luma","Blender","Unity"],["Environment art","Photogrammetry","Game assets"],["16:9"],["social"],[1,1,0],"Capture > Luma scan > Blender optimize > Unity scene",[["Studio virtual set","3D","16:9","Luma","Reusable virtual set"],["Fantasy prop pack","3D","16:9","Blender","20 optimized props"]])];
+const ini=n=>n.split(" ").map(w=>w[0]).join("");
+const grad=g=>`linear-gradient(135deg,${g[0]},${g[1]})`;
+const $=s=>document.querySelector(s);
+// hero matcher
+const needs={ "A brand film":"Film","Campaign images":"Image","A jingle or voiceover":"Audio","3D product assets":"3D"};
+const nc=$("#needChips");let cur=Object.keys(needs)[0];
+function drawMini(){
+  nc.innerHTML="";
+  Object.keys(needs).forEach(k=>{const b=document.createElement("button");b.className="chip";b.textContent=k;b.setAttribute("aria-pressed",k===cur);b.onclick=()=>{cur=k;drawMini()};nc.appendChild(b)});
+  $("#mini").innerHTML=CR.filter(c=>c.c===needs[cur]).slice(0,3).map(c=>`<div class="row"><div class="av" style="background:${grad(c.g)}">${ini(c.n)}</div><div><b>${c.n}</b><span>${c.s}</span></div><div class="rate">$${c.r}/hr</div></div>`).join("");
+}
+drawMini();
+
+// auth (demo: accounts live in this browser only)
+const mem={};
+const st={get(k){try{const v=localStorage.getItem(k);if(v!==null)return JSON.parse(v)}catch(e){}return mem[k]??null},
+set(k,v){mem[k]=v;try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},
+del(k){delete mem[k];try{localStorage.removeItem(k)}catch(e){}}};
+async function hash(em,pw){try{const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(em+":"+pw));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}catch(e){return btoa(em+":"+pw)}}
+const authEl=$("#auth"),siteEl=$("#site");
+function view(v){$("#loginView").hidden=v!=="login";$("#signupView").hidden=v!=="signup";$("#lerr").textContent="";$("#serr").textContent=""}
+$("#toSignup").onclick=e=>{e.preventDefault();view("signup")};
+$("#toLogin").onclick=e=>{e.preventDefault();view("login")};
+function openSite(u){authEl.hidden=true;siteEl.hidden=false;$("#hi").textContent="Hi, "+u.name.split(" ")[0];
+ window.scrollTo(0,0)}
+$("#signupForm").addEventListener("submit",async e=>{e.preventDefault();
+ const f=e.target.elements,em=f.email.value.trim().toLowerCase(),users=st.get("cc_users")||{};
+ if(users[em])return $("#serr").textContent="An account with this email already exists. Log in instead.";
+ if(f.password.value.length<8)return $("#serr").textContent="Use at least 8 characters for your password.";
+ if(f.password.value!==f.confirm.value)return $("#serr").textContent="Passwords do not match.";
+ const u={name:f.name.value.trim(),email:em,role:f.role.value,hash:await hash(em,f.password.value)};
+ users[em]=u;st.set("cc_users",users);st.set("cc_session",em);e.target.reset();openSite(u)});
+$("#loginForm").addEventListener("submit",async e=>{e.preventDefault();
+ const f=e.target.elements,em=f.email.value.trim().toLowerCase(),u=(st.get("cc_users")||{})[em];
+ if(!u)return $("#lerr").textContent="No account found for this email. Create an account first.";
+ if(u.hash!==await hash(em,f.password.value))return $("#lerr").textContent="Incorrect password. Try again.";
+ st.set("cc_session",em);e.target.reset();openSite(u)});
+$("#logout").onclick=()=>{st.del("cc_session");siteEl.hidden=true;authEl.hidden=false;view("login");window.scrollTo(0,0)};
+{const s=st.get("cc_session"),us=st.get("cc_users")||{};if(s&&us[s])openSite(us[s])}
+
+// search, filters, profiles
+const LIC={social:"Organic social",ads:"Paid ads",broadcast:"Broadcast and TV"};
+const U=a=>[...new Set(a)].sort();
+const fill=(id,arr,label)=>$(id).innerHTML=`<option value="">${label}</option>`+arr.map(x=>Array.isArray(x)?`<option value="${x[0]}">${x[1]}</option>`:`<option>${x}</option>`).join("");
+fill("#fc",CATS,"All content types");fill("#ft",U(CR.flatMap(c=>c.tl)),"Any tool");fill("#fs",U(CR.flatMap(c=>c.sk)),"Any skill");fill("#ff",U(CR.flatMap(c=>c.fm)),"Any format");fill("#fl",Object.entries(LIC),"Any commercial use");
+const F={q:"",c:"",tl:"",sk:"",fm:"",lic:"",v:false},ids={q:"#q",c:"#fc",tl:"#ft",sk:"#fs",fm:"#ff",lic:"#fl",v:"#fv"};
+const NM={q:"search text",c:"content type",tl:"tool",sk:"skill",fm:"format",lic:"commercial use",v:"verified only"};
+const ok=(c,f)=>(!f.q||[c.n,c.s,c.sp,...c.tl,...c.sk].join(" ").toLowerCase().includes(f.q.trim().toLowerCase()))&&(!f.c||c.c===f.c)&&(!f.tl||c.tl.includes(f.tl))&&(!f.sk||c.sk.includes(f.sk))&&(!f.fm||c.fm.includes(f.fm))&&(!f.lic||c.lic.includes(f.lic))&&(!f.v||c.vf.every(Boolean));
+const VN=["Tools","Workflow","Past work"],VD=["Tool use confirmed from project files and generation history.","Step-by-step process reviewed in a screen-share walkthrough.","Client reference or platform delivery confirmed."];
+const RT={"Aanya Rao":[4.9,38,"Delivered a polished teaser a day early and handled every revision.","Nova Footwear"],"Marcus Hale":[4.7,21,"Cinematic results and a clear shot-by-shot process.","Neon Static Records"],"Mei Tan":[4.8,54,"Fast turnaround and ads that actually performed.","FitLoop App"],"Diego Costa":[4.9,29,"Our mascot stayed consistent across every pose.","Bolt Energy"],"Lena Okafor":[4.6,43,"Great art direction and easy to brief.","Kettle and Leaf"],"Tomas Ibarra":[4.5,17,"Strong character consistency, a little slow to reply.","Pixel Pals"],"Priya Nair":[4.9,61,"Our sonic logo was ready in two days.","Cafe Mondo"],"Jonas Weber":[4.7,26,"Renders looked like real product photography.","SoundPeak"],"Sam Duarte":[4.6,12,"Clean, optimized assets that worked in our engine.","Arcadia Games"]};
+let rv=st.get("cc_rv")||[];
+const rvDraw=()=>{$("#rv").innerHTML=rv.length?"<span style='color:var(--muted);font-size:14px'>Recently viewed:</span>"+rv.map(n=>`<button class="chip" data-v="${n}">${n}</button>`).join(""):""};
+let saved=st.get("cc_saved")||[],onlySaved=false,sortBy="rel",cmpSet=[];
+const badges=c=>`<div class="vb">${VN.map((n,i)=>`<span class="${c.vf[i]?"":"no"}">${c.vf[i]?"✓ ":""}${n}</span>`).join("")}</div>`;
+const card=c=>`<article class="card"><div class="cover" style="background:${grad(c.g)}"><span>${c.sp}</span></div><div class="body"><h3>${c.n}</h3><div class="rt">★ ${RT[c.n][0]} <span>(${RT[c.n][1]} reviews)</span></div><div>${c.s}</div>${badges(c)}<div class="tools">${c.tl.join(", ")}</div><div style="display:flex;gap:6px"><button class="chip sv" data-s="${c.n}" aria-pressed="${saved.includes(c.n)}">${saved.includes(c.n)?"Saved":"Save"}</button><button class="chip sv" data-c="${c.n}" aria-pressed="${cmpSet.includes(c.n)}">${cmpSet.includes(c.n)?"Comparing":"Compare"}</button></div><div class="foot"><b>From $${c.r}/hr</b><button data-v="${c.n}">View profile</button></div></div></article>`;
+function render(){
+ const keep=c=>!onlySaved||saved.includes(c.n);
+ const res=CR.filter(c=>ok(c,F)&&keep(c));
+ if(sortBy==="top")res.sort((a,b)=>RT[b.n][0]-RT[a.n][0]||RT[b.n][1]-RT[a.n][1]);else if(sortBy==="low")res.sort((a,b)=>a.r-b.r);else if(sortBy==="fast")res.sort((a,b)=>parseInt(a.tat)-parseInt(b.tat));
+ $("#count").textContent=`${res.length} of ${CR.length} creators`;
+ if(!res.length){
+  if(onlySaved&&!saved.length){$("#grid").innerHTML=`<div class="empty" style="grid-column:1/-1"><b>You have not saved any creators yet.</b><p>Tap Save on a creator card to build your shortlist.</p></div>`;return}
+  const h=Object.keys(F).filter(k=>F[k]).map(k=>[k,CR.filter(c=>ok(c,{...F,[k]:k==="v"?false:""})&&keep(c)).length]).filter(x=>x[1]);
+  $("#grid").innerHTML=`<div class="empty" style="grid-column:1/-1"><b>No creators match these filters.</b><p>Remove one to see more:</p>${h.map(x=>`<button class="chip" data-rm="${x[0]}">Remove ${NM[x[0]]} (${x[1]} match)</button>`).join("")}<button class="chip" data-rm="all">Clear all filters</button></div>`;return}
+ $("#grid").innerHTML=res.map(card).join("")}
+$("#fsv").onchange=e=>{onlySaved=e.target.checked;render()};
+$("#fo").onchange=e=>{sortBy=e.target.value;render()};
+Object.keys(ids).forEach(k=>{const el=$(ids[k]);el.addEventListener(k==="v"?"change":"input",()=>{F[k]=k==="v"?el.checked:el.value;render()})});
+function sync(){Object.keys(ids).forEach(k=>{const el=$(ids[k]);k==="v"?el.checked=F[k]:el.value=F[k]})}
+function profile(n){const c=CR.find(x=>x.n===n);rv=[n,...rv.filter(x=>x!==n)].slice(0,4);st.set("cc_rv",rv);rvDraw();
+ $("#dc").innerHTML=`<div class="dh"><div class="av" style="width:56px;height:56px;background:${grad(c.g)}">${ini(c.n)}</div><div><h3>${c.n}</h3><span>${c.sp} · from $${c.r}/hr · ${c.tat} turnaround</span></div><button class="x" data-close aria-label="Close">×</button></div>
+ <div class="dbody"><div><h4>Verification</h4>${VN.map((t,i)=>`<div class="vrow"><b>${c.vf[i]?"✓":"–"}</b><div><b>${t} ${c.vf[i]?"verified":"not verified"}</b><br><span>${c.vf[i]?VD[i]:"This creator has not completed this check yet."}</span></div></div>`).join("")}</div>
+ <div><h4>Client review</h4><div class="vrow"><b>★ ${RT[c.n][0]}</b><div>${RT[c.n][2]}<br><span>${RT[c.n][3]} · ${RT[c.n][1]} reviews</span></div></div></div>
+ <div><h4>Tools and models</h4>${c.tl.map(t=>`<span class="tg">${t}</span>`).join("")}<h4 style="margin-top:10px">Skills</h4>${c.sk.map(t=>`<span class="tg">${t}</span>`).join("")}</div>
+ <div><h4>Formats and commercial use</h4>${c.fm.map(t=>`<span class="tg">${t}</span>`).join("")}${c.lic.map(t=>`<span class="tg">${LIC[t]}</span>`).join("")}</div>
+ <div><h4>Workflow</h4><ol style="margin:0;padding-left:20px">${c.wf.map(w=>`<li>${w}</li>`).join("")}</ol></div>
+ <div><h4>AI portfolio</h4><div class="pf">${c.p.map(p=>`<div class="pi"><div class="th" style="background:${grad(c.g)};aspect-ratio:${p[2].replace(":","/")};width:${p[2]==="9:16"?"50%":"100%"}">${p[1]} · ${p[2]}</div><b>${p[0]}</b><br><span>Made with ${p[3]}. ${p[4]}</span></div>`).join("")}</div></div>
+<div class="cta"><button class="btn" data-s="${c.n}">${saved.includes(c.n)?"Remove from saved":"Save creator"}</button><button class="btn ghost" data-ask="${c.n}">Ask AI about ${c.n.split(" ")[0]}</button><button class="btn" data-req="${c.n}">Request a quote</button></div>
+</div>`;
+ if(!$("#dlg").open)$("#dlg").showModal()}
+document.addEventListener("click",e=>{const t=e.target;
+ if(t.dataset.v){if(t.tagName==="A")e.preventDefault();profile(t.dataset.v)}
+ if(t.dataset.s){const n=t.dataset.s;saved=saved.includes(n)?saved.filter(x=>x!==n):[...saved,n];st.set("cc_saved",saved);render();if($("#dlg").open)profile(n)}
+ if(t.dataset.ask){$("#dlg").close();openChat();send("Tell me about "+t.dataset.ask+" and whether they fit my project.")}
+ if(t.dataset.cq)send(t.dataset.cq);
+ if(t.dataset.c){const n=t.dataset.c;cmpSet=cmpSet.includes(n)?cmpSet.filter(x=>x!==n):cmpSet.length<3?[...cmpSet,n]:cmpSet;render();cbar()}
+ if("cmpgo" in t.dataset)showCmp();
+ if("cmpclr" in t.dataset){cmpSet=[];render();cbar()}
+ if(t.dataset.close2!==undefined||t===$("#dlg2"))$("#dlg2").close();
+ if(t.dataset.req)reqForm(t.dataset.req);
+ if(t.dataset.rm){t.dataset.rm==="all"?Object.keys(F).forEach(k=>F[k]=k==="v"?false:""):F[t.dataset.rm]=t.dataset.rm==="v"?false:"";sync();render()}
+ if(t.dataset.close!==undefined||t===$("#dlg"))$("#dlg").close();
+ });
+render();
+
+
+// AI assistant (ChatGPT-style)
+let sample=null,hist=[],busy=false;
+try{window.claude&&window.claude.use("sample").then(x=>{sample=x;if(!x)$("#cnote").textContent="AI replies work when this page is opened in Claude."}).catch(()=>{})}catch(e){}
+const SYS=`You are CreatorConnect AI, a helpful assistant on a marketplace that connects brands with generative AI creators. Recommend creators ONLY from this catalog and use their exact names. Explain why each fits (tools, format, license, verification, rate, turnaround). If the need is unclear, ask one short question. Be concise. Plain text, short paragraphs, simple lists.\nCatalog: ${JSON.stringify(CR.map(c=>({name:c.n,type:c.c,role:c.sp,about:c.s,rate:"$"+c.r+"/hr",turnaround:c.tat,tools:c.tl,skills:c.sk,formats:c.fm,licenses:c.lic.map(x=>LIC[x]),verified:{tools:!!c.vf[0],workflow:!!c.vf[1],pastWork:!!c.vf[2]}})))}\n\n`;
+const fmt=t=>{let h=t.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])).replace(/\*\*(.+?)\*\*/g,"<b>$1</b>").replace(/\n/g,"<br>");
+ CR.forEach(c=>{h=h.split(c.n).join(`<a href="#" class="lk" data-v="${c.n}">${c.n}</a>`)});return h};
+function cdraw(){const b=$("#cm");
+ if(!hist.length){b.innerHTML=`<div class="cemp"><h3>Who do you want to hire?</h3><p>Describe your project and I will suggest creators from the marketplace.</p>${["Find a creator for a 9:16 paid ad","Who is fully verified for broadcast?","Compare Aanya Rao and Marcus Hale","Best tools for a brand mascot?"].map(x=>`<button class="chip" data-cq="${x}">${x}</button>`).join("")}</div>`;return}
+ b.innerHTML=hist.map(m=>`<div class="cmsg ${m.role==="user"?"u":"a"}"><div class="av">${m.role==="user"?"You":"AI"}</div><div class="tx">${fmt(m.content||"Thinking...")}</div></div>`).join("");b.scrollTop=b.scrollHeight}
+function openChat(){$("#chat").hidden=false;$("#fab").hidden=true;cdraw();$("#ci").focus()}
+async function send(text){text=text.trim();if(!text||busy)return;openChat();
+ if(!sample){hist.push({role:"user",content:text},{role:"assistant",content:"AI replies are available when this page is opened in Claude. Open the link from your Claude account and try again."});cdraw();return}
+ busy=true;hist.push({role:"user",content:text});const r={role:"assistant",content:""};hist.push(r);$("#ci").value="";cdraw();
+ const msgs=hist.slice(0,-1).map((m,i)=>i===0?{role:"user",content:SYS+m.content}:m);
+ try{await sample(msgs,{cache:false,onText:({text})=>{r.content=text;cdraw()}})}catch(e){r.content=r.content||(e&&e.code==="rate_limited"?"Too many requests. Wait a moment and try again.":"The assistant could not answer right now. Try again.");cdraw()}
+ busy=false}
+$("#fab").onclick=openChat;$("#cx").onclick=()=>{$("#chat").hidden=true;$("#fab").hidden=false};
+$("#cnew").onclick=()=>{hist=[];cdraw()};$("#cs").onclick=()=>send($("#ci").value);
+$("#ci").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();send($("#ci").value)}});
+$("#ci").addEventListener("input",e=>{e.target.style.height="auto";e.target.style.height=e.target.scrollHeight+"px"});
+
+// compare, quotes, theme
+let reqs=st.get("cc_reqs")||[];
+const E=t=>String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const open2=()=>{if(!$("#dlg2").open)$("#dlg2").showModal()};
+const est=(c,h,r)=>Math.round(c.r*Math.max(1,+h||1)*(r?1.25:1));
+const rb=()=>{$("#reqBtn").textContent=`Requests (${reqs.length})`};
+function cbar(){const b=$("#cmp");b.hidden=!cmpSet.length;
+ b.innerHTML=`<span>${cmpSet.length} selected${cmpSet.length>=3?" (max 3)":""}</span><button class="btn" data-cmpgo ${cmpSet.length<2?"disabled":""}>Compare</button><button class="chip" data-cmpclr>Clear</button>`}
+function showCmp(){const L=cmpSet.map(n=>CR.find(c=>c.n===n));
+ const rows=[["Role",c=>c.sp],["Rate",c=>"$"+c.r+"/hr"],["Turnaround",c=>c.tat],["Tools",c=>c.tl.join(", ")],["Skills",c=>c.sk.join(", ")],["Formats",c=>c.fm.join(", ")],["Commercial use",c=>c.lic.map(x=>LIC[x]).join(", ")],["Verified",c=>c.vf.filter(Boolean).length+" of 3 checks"]];
+ $("#dc2").innerHTML=`<div class="dh"><h3>Compare creators</h3><button class="x" data-close2 aria-label="Close">×</button></div><div class="dbody tw"><table class="tbl"><tr><th></th>${L.map(c=>`<th style="color:var(--ink)">${c.n}</th>`).join("")}</tr>${rows.map(r=>`<tr><th>${r[0]}</th>${L.map(c=>`<td>${r[1](c)}</td>`).join("")}</tr>`).join("")}</table></div>`;open2()}
+function reqForm(n){const c=CR.find(x=>x.n===n);$("#dlg").close();
+ $("#dc2").innerHTML=`<div class="dh"><h3>Request a quote from ${c.n}</h3><button class="x" data-close2 aria-label="Close">×</button></div><div class="dbody"><form id="rq" class="rq" style="max-width:none"><label>Project<input name="proj" required placeholder="e.g. 15s vertical product teaser"></label><label>Hours needed<input name="hrs" type="number" min="1" max="200" value="10" required></label><label class="chk"><input type="checkbox" name="rush"> Rush delivery (+25%)</label><div>Estimated cost<span class="est" id="est"></span></div><button class="btn" type="submit">Send request</button><p id="rqm" role="status" style="margin:0"></p></form></div>`;
+ const f=$("#rq").elements,u=()=>{$("#est").textContent="$"+est(c,f.hrs.value,f.rush.checked)};f.hrs.oninput=u;f.rush.onchange=u;u();
+ $("#rq").onsubmit=e=>{e.preventDefault();reqs.unshift({name:c.n,proj:f.proj.value.trim(),hrs:+f.hrs.value,rush:f.rush.checked,est:est(c,f.hrs.value,f.rush.checked),at:new Date().toLocaleDateString()});st.set("cc_reqs",reqs.slice(0,20));rb();
+  $("#rqm").textContent="Request sent to "+c.n+". Track it under Requests at the top.";e.target.querySelector("button[type=submit]").disabled=true};open2()}
+$("#reqBtn").onclick=()=>{$("#dc2").innerHTML=`<div class="dh"><h3>My requests</h3><button class="x" data-close2 aria-label="Close">×</button></div><div class="dbody">${reqs.length?reqs.map(r=>`<div class="vrow"><div><b>${E(r.name)}</b><br><span>${E(r.proj)} · ${r.hrs}h · est. $${r.est}${r.rush?" (rush)":""} · ${r.at}</span></div><b style="margin-left:auto">Sent</b></div>`).join(""):"<p style='margin:0'>No requests yet. Open a creator profile and choose Request a quote.</p>"}</div>`;open2()};
+{const t=st.get("cc_theme");if(t)document.documentElement.dataset.theme=t}
+$("#theme").onclick=()=>{const r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==="dark":matchMedia("(prefers-color-scheme:dark)").matches;r.dataset.theme=dark?"light":"dark";st.set("cc_theme",r.dataset.theme)};
+rb();cbar();rvDraw();
+</script>
+</body>
+</html>
